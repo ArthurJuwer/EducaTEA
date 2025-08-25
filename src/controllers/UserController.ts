@@ -10,16 +10,19 @@ export class UserController {
         try {
             const { name } = req.body;
             if (!name) {
-                return res.status(400).json({ message: 'Name is required' });
+                res.status(400).json({ message: 'Name is required' });
+                return;
             }
 
 
             const newUser = userRepository.create({ name });
             await userRepository.save(newUser);
 
-            return res.status(201).json(newUser);
+            res.status(201).json(newUser);
+            return;
         } catch (error) {
-            return res.status(500).json({ message: 'Internal Server Error', error });
+            res.status(500).json({ message: 'Internal Server Error', error });
+            return;
         }
     }
 
@@ -27,9 +30,11 @@ export class UserController {
         try {
 
             const users = await userRepository.find({ relations: ['comentarios'] });
-            return res.json(users);
+            res.json(users);
+            return;
         } catch (error) {
-            return res.status(500).json({ message: 'Internal Server Error', error });
+            res.status(500).json({ message: 'Internal Server Error', error });
+            return;
         }
     }
 }

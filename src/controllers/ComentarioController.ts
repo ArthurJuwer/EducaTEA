@@ -12,14 +12,16 @@ export class ComentarioController {
       const { comentarioEscrito, userId } = req.body;
 
       if (!comentarioEscrito || !userId) {
-        return res.status(400).json({ message: 'comentarioEscrito and userId are required' });
+         res.status(400).json({ message: 'comentarioEscrito and userId are required' });
+         return;
       }
 
       
       const user = await userRepository.findOne(userId);
 
       if (!user) {
-        return res.status(404).json({ message: 'User not found' });
+         res.status(404).json({ message: 'User not found' });
+         return;
       }
 
 
@@ -30,9 +32,11 @@ export class ComentarioController {
 
       await comentarioRepository.save(newComentario);
 
-      return res.status(201).json(newComentario);
+       res.status(201).json(newComentario);
+       return;
     } catch (error) {
-      return res.status(500).json({ message: 'Internal Server Error', error });
+       res.status(500).json({ message: 'Internal Server Error', error });
+       return;
     }
   }
 
