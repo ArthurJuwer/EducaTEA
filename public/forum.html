@@ -5,15 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Educa TEA | Fórum</title>
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="./js/forum.js" defer></script>
   <link rel="icon" href="./images/Favicon.ico" type="image/x-icon">
 </head>
 <body class="bg-gray-100 text-gray-900">
-  
+    <div id="overlay" class="hidden bg-black opacity-35 fixed w-full h-full block z-40"></div>
+
   <header class="px-8 py-6 flex justify-between items-center bg-white shadow-md">
     <a href="index.html">
       <img src="./images/Logo-Escrita.png" alt="Logo Educa TEA" class="w-36">
     </a>
     <nav>
+
+        <div id="btn-menu" class="flex flex-col gap-2 items-center lg:hidden"> 
+            <span class="size-3 bg-black block rounded-full"></span>
+            <div class="flex gap-3">
+                <span class="size-3 bg-black block rounded-full"></span>
+                <span class="size-3 bg-black block rounded-full"></span>
+            </div>
+        </div>
+
       <ul class="hidden lg:flex gap-12 uppercase font-bold text-lg">
         <li><a href="./index.html#pitch" class="hover:text-[#0033FF]">Pitch</a></li>
         <li><a href="./index.html#jogar" class="hover:text-[#0033FF]">Jogar</a></li>
@@ -22,6 +33,14 @@
         <li><a href="./index.html#equipe" class="hover:text-[#0033FF]">Equipe</a></li>
       </ul>
     </nav>
+        <ul id="mobile-menu" class="hidden fixed top-0 right-0 w-4/5 h-full bg-white shadow-lg flex flex-col items-center gap-12 p-12 uppercase font-bold text-lg z-50">
+            <li class="absolute right-10 text-[#0033FF]" id="btn-close">X</li>
+            <li><a href="./index.html#pitch" class="hover:text-[#0033FF]">Pitch</a></li>
+            <li><a href="./index.html#jogar" class="hover:text-[#0033FF]">Jogar</a></li>
+            <li><a href="./index.html#cenas" class="hover:text-[#0033FF]">Cenas</a></li>
+            <li><a href="#forum" class="hover:text-[#0033FF]">Fórum</a></li>
+            <li><a href="./index.html#equipe" class="hover:text-[#0033FF]">Equipe</a></li>
+        </ul>
   </header>
 
   <main class="px-6 lg:px-20 py-10">

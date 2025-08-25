@@ -29,11 +29,12 @@
     <title>Educa Tea | Jogo Educacional</title>
 </head>
 <body>
+    <div id="overlay" class="hidden bg-black opacity-35 fixed w-full h-full block z-40"></div>
     <header class="px-8 py-6 flex justify-between items-center">
         <img src="./images/Logo-Escrita.png" alt="Logo Escrita Educa TEA" class="w-36">
         <nav>
             
-            <div class="flex flex-col gap-2 items-center lg:hidden"> 
+            <div id="btn-menu" class="flex flex-col gap-2 items-center lg:hidden"> 
                 <span class="size-3 bg-black block rounded-full"></span>
                 <div class="flex gap-3">
                     <span class="size-3 bg-black block rounded-full"></span>
@@ -50,6 +51,14 @@
                 <li><a href="#equipe" class="hover:text-[#0033FF]">Equipe</a></li>
             </ul>
         </nav>
+            <ul id="mobile-menu" class="hidden fixed top-0 right-0 w-4/5 h-full bg-white shadow-lg flex flex-col items-center gap-12 p-12 uppercase font-bold text-lg z-50">
+                <li class="absolute right-10 text-[#0033FF]" id="btn-close">X</li>
+                <li><a href="#pitch" class="hover:text-[#0033FF]">Pitch</a></li>
+                <li><a href="#jogar" class="hover:text-[#0033FF]">Jogar</a></li>
+                <li><a href="#cenas" class="hover:text-[#0033FF]">Cenas</a></li>
+                <li><a href="#forum" class="hover:text-[#0033FF]">Fórum</a></li>
+                <li><a href="#equipe" class="hover:text-[#0033FF]">Equipe</a></li>
+            </ul>
     </header>
     <main>
         <section class="bg-[url(./images/phone-Background.png)] flex flex-col items-center justify-center px-8 py-14 gap-y-5">
@@ -84,7 +93,7 @@
                 </div>
             </div>
 
-            <p class="lg:hidden mt-12 mb-8 text-center text-white text-3xl font-light uppercase text">um jogo criado com propósito educacional desenvolvido por alunos do e.m senac.</p>
+            <p class="lg:hidden mt-12 mb-8 text-center text-white text-3xl px-2 font-light uppercase text">um jogo criado com propósito educacional desenvolvido por alunos do e.m senac.</p>
             <h1 class="lg:mt-6 text-white text-2xl font-bold">EXPERIMENTE E APRENDA!</h1>
             
             

@@ -33,3 +33,21 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+
+    // MENU MOBILE
+
+                    const btnMenu = document.getElementById("btn-menu");
+  const btnClose = document.getElementById("btn-close");
+  const overlay = document.getElementById("overlay");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  btnMenu.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden"); // abre/fecha
+    overlay.classList.toggle("hidden"); // abre/fecha
+  });
+
+  // Fecha o menu ao clicar em um link
+  btnClose.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden"); // abre/fecha
+    overlay.classList.toggle("hidden"); // abre/fecha
+  });
