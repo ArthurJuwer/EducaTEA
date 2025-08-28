@@ -1,40 +1,37 @@
-import { Request, Response } from 'express';
-import { User } from '../models/User';
-import { AppDataSource } from '../config/data-source';
-
-const userRepository = AppDataSource.getRepository(User);
-
+import { Request, Response } from "express";
+import { AppDataSource } from "../config/data-source";
+import { User } from "../models/User";
 
 export class UserController {
-    async createUser(req: Request, res: Response) {
-        try {
-            const { name } = req.body;
-            if (!name) {
-                res.status(400).json({ message: 'Name is required' });
-                return;
-            }
-
-
-            const newUser = userRepository.create({ name });
-            await userRepository.save(newUser);
-
-            res.status(201).json(newUser);
-            return;
-        } catch (error) {
-            res.status(500).json({ message: 'Internal Server Error', error });
-            return;
-        }
+  // Buscar todos os usuários com seus comentários
+ async getAll(req: Request, res: Response) {
+    try {
+      const userRepo = AppDataSource.getRepository(User);
+      const users = await userRepo.find({ relations: ["comentarios"] });
+      return res.json(users);
+    } catch (error) {
+      console.error("Erro ao buscar usuários:", error);
+      return res.status(500).json({ message: "Erro interno no servidor" });
     }
+  }
 
-    async getUsers(req: Request, res: Response) {
-        try {
+  // Criar novo usuário
+   async create(req: Request, res: Response) {
+    try {
+      const { name } = req.body;
 
-            const users = await userRepository.find({ relations: ['comentarios'] });
-            res.json(users);
-            return;
-        } catch (error) {
-            res.status(500).json({ message: 'Internal Server Error', error });
-            return;
-        }
+      if (!name) {
+        return res.status(400).json({ message: "O campo 'name' é obrigatório" });
+      }
+
+      const userRepo = AppDataSource.getRepository(User);
+      const novoUser = userRepo.create({ name });
+      await userRepo.save(novoUser);
+
+      return res.status(201).json(novoUser);
+    } catch (error) {
+      console.error("Erro ao criar usuário:", error);
+      return res.status(500).json({ message: "Erro interno no servidor" });
     }
+  }
 }

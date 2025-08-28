@@ -1,56 +1,48 @@
-import { Request, Response } from 'express';
-import { AppDataSource } from '../config/data-source';
-import { Comentario } from '../models/Comentario';
-import { User } from '../models/User';
-
-const userRepository = AppDataSource.getRepository(User);
-const comentarioRepository = AppDataSource.getRepository(Comentario);
+import { Request, Response } from "express";
+import { AppDataSource } from "../config/data-source";
+import { Comentario } from "../models/Comentario";
+import { User } from "../models/User";
 
 export class ComentarioController {
-   async createComentario(req: Request, res: Response) {
+  // Buscar todos os comentários (com dados do usuário)
+  async getAll(req: Request, res: Response) {
     try {
-      const { comentarioEscrito, userId } = req.body;
-
-      if (!comentarioEscrito || !userId) {
-         res.status(400).json({ message: 'comentarioEscrito and userId are required' });
-         return;
-      }
-
-      
-      const user = await userRepository.findOne(userId);
-
-      if (!user) {
-         res.status(404).json({ message: 'User not found' });
-         return;
-      }
-
-
-      const newComentario = comentarioRepository.create({
-        comentarioEscrito,
-        user,
-      });
-
-      await comentarioRepository.save(newComentario);
-
-       res.status(201).json(newComentario);
-       return;
+      const comentarioRepo = AppDataSource.getRepository(Comentario);
+      const comentarios = await comentarioRepo.find({ relations: ["user"] });
+      return res.json(comentarios);
     } catch (error) {
-       res.status(500).json({ message: 'Internal Server Error', error });
-       return;
+      console.error("Erro ao buscar comentários:", error);
+      return res.status(500).json({ message: "Erro interno no servidor" });
     }
   }
 
-   async getComentariosByUser(req: Request, res: Response) {
+  // Criar novo comentário vinculado a um usuário
+  async create(req: Request, res: Response) {
     try {
-      const userId = parseInt(req.params.userId);
-      const comentarios = await comentarioRepository.find({
-        where: { user: { id: userId } },
-        relations: ['user'],
-      });
+      const { userId, comentarioEscrito } = req.body;
 
-      return res.json(comentarios);
+      if (!userId || !comentarioEscrito) {
+        return res.status(400).json({
+          message: "Campos 'userId' e 'comentarioEscrito' são obrigatórios",
+        });
+      }
+
+      const userRepo = AppDataSource.getRepository(User);
+      const comentarioRepo = AppDataSource.getRepository(Comentario);
+
+      const user = await userRepo.findOne({ where: { id: userId } });
+
+      if (!user) {
+        return res.status(404).json({ message: "Usuário não encontrado" });
+      }
+
+      const novoComentario = comentarioRepo.create({ comentarioEscrito, user });
+      await comentarioRepo.save(novoComentario);
+
+      return res.status(201).json(novoComentario);
     } catch (error) {
-      return res.status(500).json({ message: 'Internal Server Error', error });
+      console.error("Erro ao criar comentário:", error);
+      return res.status(500).json({ message: "Erro interno no servidor" });
     }
   }
 }
