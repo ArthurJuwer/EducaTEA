@@ -3,8 +3,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   async function carregarComentarios() {
     try {
-      const response = await fetch("/api/comentarios");
-      if (!response.ok) throw new Error("Erro ao buscar comentários", response);
+      const response = await fetch("/comentarios");
+      if (!response.ok) throw new Error("Erro ao buscar comentários");
 
       const comentarios = await response.json();
       comentariosContainer.innerHTML = "";
