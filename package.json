@@ -1,7 +1,7 @@
 {
   "name": "src",
   "version": "1.0.0",
-  "main": "server.ts",
+  "main": "src/server.ts",
   "scripts": {
     "build": "tsc",
     "dev": "npx ts-node-dev src/server.ts"

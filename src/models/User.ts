@@ -1,18 +1,18 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
-import { Comentario } from './Comentario';
+// import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+// import { Comentario } from './Comentario';
 
-@Entity('users')
-export class User {
-    @PrimaryGeneratedColumn()
-    id!: number;
+// @Entity('users')
+// export class User {
+//     @PrimaryGeneratedColumn()
+//     id!: number;
 
-    @Column({ type: 'varchar', length: 255, nullable: false })
-    name!: string;
+//     @Column({ type: 'varchar', length: 255, nullable: false })
+//     name!: string;
 
-    @OneToMany(() => Comentario, comentario => comentario.user)
-    comentarios!: Comentario[];
+//     @OneToMany(() => Comentario, comentario => comentario.user)
+//     comentarios!: Comentario[];
 
-    constructor(name: string) {
-        this.name = name;
-    }
-}
+//     constructor(name: string) {
+//         this.name = name;
+//     }
+// }
