@@ -1,6 +1,6 @@
 import express, { Application, Request, Response } from 'express';
 import { AppDataSource } from './config/data-source';
-import UserRoutes from './routes/UserRoutes';
+// import UserRoutes from './routes/UserRoutes';
 import ComentarioRoutes from './routes/ComentarioRoutes'
 import cors from "cors";
 import path from 'path';

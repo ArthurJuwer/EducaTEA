@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { AppDataSource } from "../config/data-source";
 import { Comentario } from "../models/Comentario";
-import { User } from "../models/User";
+// import { User } from "../models/User";
 
 export class ComentarioController {
   // Buscar todos os comentários (com dados do usuário)
