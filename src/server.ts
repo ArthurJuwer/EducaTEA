@@ -31,7 +31,7 @@ app.get("/", (req: Request, res: Response) => {
 AppDataSource.initialize()
   .then(() => {
  
-    app.use(UserRoutes);
+    //app.use(UserRoutes);
     app.use(ComentarioRoutes);
 
     app.listen(3000, () => console.log('Server rodando na porta 3000'));
