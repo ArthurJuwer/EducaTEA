@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   async function carregarComentarios() {
     try {
-      const response = await fetch("http://localhost:3000/comentarios");
+      const response = await fetch("https://educa-tea.vercel.app/comentarios");
       if (!response.ok) throw new Error("Erro ao buscar comentários");
 
       const comentarios = await response.json();

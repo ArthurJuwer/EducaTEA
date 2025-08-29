@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function carregarComentarios() {
     try {
-      const response = await fetch("http://localhost:3000/comentarios");
+      const response = await fetch("https://educa-tea.vercel.app/comentarios");
       if (!response.ok) throw new Error("Erro ao buscar comentários");
 
       const comentarios = await response.json();
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Torna a função global para recarregar após criar comentário
   window.carregarComentarios = carregarComentarios;
-  
+
   // ====== FORMULÁRIO DE COMENTÁRIOS ======
   const form = document.querySelector("#form-comentario"); // <- ID do <form>, não do botão
   const btnPublicar = document.querySelector("#btn-publicar");
@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     try {
-      const response = await fetch("http://localhost:3000/comentarios", {
+      const response = await fetch("https://educa-tea.vercel.app/comentarios", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
