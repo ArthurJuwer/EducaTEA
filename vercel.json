@@ -2,14 +2,14 @@
     "buildCommand": "tsc",
     "builds":[
         {
-            "src": "src/dist/server.js",
+            "src": "dist/server.js",
             "use": "@vercel/node"
         }
     ],
     "routes":[
         {
             "src": "/(.*)",
-            "dest": "src/dist/server.js"
+            "dest": "dist/ComentarioRoutes.js"
         }
     ]
 }
