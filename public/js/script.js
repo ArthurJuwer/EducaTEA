@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   async function carregarComentarios() {
     try {
       const response = await fetch("/comentarios");
+      console.log(response);
       if (!response.ok) throw new Error("Erro ao buscar comentários");
 
       const comentarios = await response.json();
