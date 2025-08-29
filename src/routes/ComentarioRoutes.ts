@@ -5,7 +5,7 @@ import { ComentarioController } from "../controllers/ComentarioController"
 const router = Router();
 const comentarioController = new ComentarioController();
 
-router.get("/comentarios", comentarioController.getAll);
-router.post("/comentarios", comentarioController.create);
+router.get("/api/comentarios", comentarioController.getAll);
+router.post("/api/comentarios", comentarioController.create);
 
 export default router;
