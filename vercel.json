@@ -9,7 +9,7 @@
     "routes":[
         {
             "src": "/(.*)",
-            "dest": "dist/ComentarioRoutes.js"
+            "dest": "dist/server.js"
         }
     ]
 }
