@@ -11,7 +11,7 @@ export const AppDataSource = new DataSource({
     username: "u1rkbfb6cxmulfr9",
     password: "Rk4Ydm8QlR6Jr6oPlhEN",
     database: "bpu2glxfluxbveprzf7p",
-    entities: ["src/models/Comentario.ts"], // dps colocar src/models/*.ts 
+    entities: ["api/comentarios.ts"], // dps colocar src/models/*.ts 
     migrations: ["src/migrations/**/*.ts"],
     synchronize: true,
     logging: false,
